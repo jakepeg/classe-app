@@ -1,7 +1,7 @@
 import React from "react";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import AppNavigator from "./navigator/AppNavigator";
+import TabNavigator from "./navigator/TabNavigator";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
@@ -32,7 +32,7 @@ const store = createStore(reducer);
 const App = () => (
   <ApolloProvider client={client}>
     <Provider store={store}>
-      <AppNavigator />
+      <TabNavigator />
     </Provider>
   </ApolloProvider>
 );

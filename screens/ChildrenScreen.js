@@ -1,21 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
-class ProjectsScreen extends React.Component {
+class ChildrenScreen extends React.Component {
   static navigationOptions = {
-    header: null
+    // header: null
   };
 
   render() {
     return (
       <Container>
-        <Text>Projects Screen</Text>
+        <Text>My Children Screen</Text>
       </Container>
     );
   }
 }
 
-export default ProjectsScreen;
+export default ChildrenScreen;
 
 const Container = styled.View`
   flex: 1;

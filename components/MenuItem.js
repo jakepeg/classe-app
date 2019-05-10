@@ -5,7 +5,7 @@ import { Icon } from "expo";
 const MenuItem = props => (
   <Container>
     <IconView>
-      <Icon.Ionicons name={props.icon} size={24} color="#546bfb" />
+      <Icon.Ionicons name={props.icon} size={26} color="#BDE4F7" />
     </IconView>
     <Content>
       <Title>{props.title}</Title>
@@ -18,14 +18,13 @@ export default MenuItem;
 
 const Container = styled.View`
   flex-direction: row;
-  margin: 15px 0;
+  margin-top: 30px;
 `;
 
 const IconView = styled.View`
   width: 32px;
   height: 32px;
   justify-content: center;
-  align-items: center;
 `;
 
 const Content = styled.View`
@@ -33,14 +32,14 @@ const Content = styled.View`
 `;
 
 const Title = styled.Text`
-  color: #3c4560;
-  font-size: 24px;
-  font-weight: 600;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 500;
 `;
 
 const Text = styled.Text`
-  color: #3c4560;
-  font-weight: 600;
-  opacity: 0.6;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
   margin-top: 5px;
 `;

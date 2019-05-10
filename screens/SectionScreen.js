@@ -10,8 +10,6 @@ import {
 import { Icon } from "expo";
 import Markdown from "react-native-showdown";
 
-const formatDate = date => new Date(date).toDateString();
-
 class SectionScreen extends React.Component {
   static navigationOptions = {
     header: null
@@ -22,12 +20,17 @@ class SectionScreen extends React.Component {
   }
 
   componentWillUnmount() {
-    StatusBar.setBarStyle("dark-content", true);
+    StatusBar.setBarStyle("light-content", true);
   }
 
   render() {
     const { navigation } = this.props;
     const section = navigation.getParam("section");
+    const posty = section.date;
+    const year = posty.slice(0, 4);
+    const month = posty.slice(5, 7);
+    const day = posty.slice(8, 10);
+    const theDate = day + "/" + month + "/" + year;
 
     return (
       <ScrollView>
@@ -61,15 +64,15 @@ class SectionScreen extends React.Component {
 
           <Content>
             <Title>{section.title}</Title>
+            <Author>
+              Posted By {section.author.name} on {theDate}
+            </Author>
             <Markdown
               body={section.content}
               pureCSS={htmlStyles}
               scalesPageToFit={false}
               scrollEnabled={false}
             />
-            <Caption>
-              Posted By {section.author.name} on {section.date}
-            </Caption>
           </Content>
         </Container>
       </ScrollView>
@@ -155,7 +158,6 @@ const Title = styled.Text`
   font-size: 24px;
   color: black;
   font-weight: bold;
-  width: 170px;
 `;
 
 const Caption = styled.Text`
@@ -193,4 +195,11 @@ const Subtitle = styled.Text`
   color: rgba(255, 255, 255, 0.8);
   margin-left: 5px;
   text-transform: uppercase;
+`;
+
+const Author = styled.Text`
+  font-size: 13px;
+  color: #b8bece;
+  font-weight: 500;
+  margin-top: 4px;
 `;

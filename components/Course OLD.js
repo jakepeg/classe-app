@@ -78,9 +78,8 @@ const Logo = styled.Image`
   width: 48px;
   height: 48px;
   position: absolute;
-  top: 90px;
-  left: 50%;
-  margin-left: -24px;
+  top: 10px;
+  left: 10px;
 `;
 
 const Title = styled.Text`

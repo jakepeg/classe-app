@@ -1,26 +1,30 @@
 import React from "react";
+import { StatusBar } from "react-native";
 import styled from "styled-components";
+import Menu from "../components/Menu";
 
-class CoursesScreen extends React.Component {
+class MoreScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
 
+  componentDidMount() {
+    // StatusBar.setBarStyle("dark-content", true);
+  }
+
   render() {
     return (
       <Container>
-        <Text>Courses Screen</Text>
+        <Menu />
       </Container>
     );
   }
 }
 
-export default CoursesScreen;
+export default MoreScreen;
 
 const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
 `;
-
-const Text = styled.Text``;
