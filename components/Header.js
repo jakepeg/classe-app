@@ -1,27 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import { withNavigation } from "react-navigation";
+import { TouchableOpacity } from "react-native";
 
 class Header extends React.Component {
   render() {
     return (
       <Wrapper>
         <HeaderImage source={require("../assets/headerbluesolid.png")} />
+
         <Name>Quin Jim</Name>
-        <ProfileImage source={require("../assets/quin.png")} />
-        {/* <TouchableOpacity
-          onPress={() => {
-            this.props.navigation.push("Settings");
-          }}
-          style={{ position: "absolute", right: 20, top: 25 }}
+
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("Children")}
         >
-          <Icon.Ionicons
-            name="ios-settings"
-            size={20}
-            color="rgba(255, 255, 255, 0.75)"
-            style={{ marginTop: 20 }}
-          />
-        </TouchableOpacity> */}
+          <ProfileImage source={require("../assets/quin.png")} />
+        </TouchableOpacity>
       </Wrapper>
     );
   }

@@ -1,25 +1,26 @@
 import React from "react";
 import styled from "styled-components";
-import Children from "../components/Children";
 
-class ChildrenScreen extends React.Component {
+class EmptyScreen extends React.Component {
   static navigationOptions = {
-    header: null
+    // header: null
   };
 
   render() {
     return (
       <Container>
-        <Children />
+        <Text>Coming Soon</Text>
       </Container>
     );
   }
 }
 
-export default ChildrenScreen;
+export default EmptyScreen;
 
 const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
 `;
+
+const Text = styled.Text``;

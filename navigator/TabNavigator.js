@@ -11,6 +11,7 @@ import MoreScreen from "../screens/MoreScreen";
 import AgendaScreen from "../screens/AgendaScreen";
 import MessagesScreen from "../screens/MessagesScreen";
 import ChildrenScreen from "../screens/ChildrenScreen";
+import EmptyScreen from "../screens/EmptyScreen";
 
 const activeColor = "#ffffff";
 const inactiveColor = "#BDE4F7";
@@ -33,7 +34,7 @@ HomeStack.navigationOptions = ({ navigation }) => {
   var tabBarVisible = true;
   const routeName = navigation.state.routes[navigation.state.index].routeName;
 
-  if (routeName == "Section" || routeName == "Settings") {
+  if (routeName == "Section") {
     tabBarVisible = false;
   }
 
@@ -119,6 +120,9 @@ const MoreStack = createStackNavigator({
   },
   Children: {
     screen: ChildrenScreen
+  },
+  EmptyScreen: {
+    screen: EmptyScreen
   }
 });
 

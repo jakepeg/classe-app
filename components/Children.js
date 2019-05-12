@@ -1,0 +1,99 @@
+import React from "react";
+import { TouchableOpacity, Button } from "react-native";
+import styled from "styled-components";
+import Child from "./Child";
+import { withNavigation } from "react-navigation";
+import { Icon } from "expo";
+
+class Children extends React.Component {
+  render() {
+    return (
+      <Wrapper>
+        <ChildList>
+          <Title>Mes Enfants</Title>
+          {children.map((child, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => this.props.navigation.navigate("Home")}
+            >
+              <Child
+                key={index}
+                profile_pic={child.profile_pic}
+                name={child.name}
+                classe={child.classe}
+              />
+            </TouchableOpacity>
+          ))}
+        </ChildList>
+
+        <Container>
+          <ActionButton>+</ActionButton>
+        </Container>
+      </Wrapper>
+    );
+  }
+}
+
+export default withNavigation(Children);
+
+const ChildList = styled.View`
+  padding-left: 30px;
+`;
+
+const Title = styled.Text`
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 300;
+  width: 100%;
+  margin-top: 70px;
+  text-align: center;
+`;
+
+const Wrapper = styled.View`
+  height: 100%;
+  width: 100%;
+  background: #009adb;
+`;
+
+const Container = styled.View`
+  position: absolute;
+  margin-left: -30px;
+  left: 50%;
+  bottom: 40px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  elevation: 10;
+  background-color: #ffffff;
+`;
+
+const ActionButton = styled.Text`
+  font-size: 45px;
+  font-weight: 600;
+  color: #d5003c;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+`;
+
+const children = [
+  {
+    name: "Quin Jim",
+    profile_pic: "https://cl.ly/9e343dd10c2c/quin.png",
+    child_id: "00000001",
+    classe: "1P (Marie-Anne)"
+  },
+  {
+    name: "Elodie Laia",
+    profile_pic: "https://cl.ly/80131793f4f8/IMG_0216.jpg",
+    child_id: "00000002",
+    classe: "8E (Cyril)"
+  },
+  {
+    name: "Louis Cyril",
+    profile_pic: "https://cl.ly/4667cf183191/lou.jpg",
+    child_id: "00000003",
+    classe: "Year 12"
+  }
+];

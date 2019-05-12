@@ -11,7 +11,7 @@ class Menu extends React.Component {
         {items.map((item, index) => (
           <TouchableOpacity
             key={index}
-            onPress={() => this.props.navigation.navigate("Children")}
+            onPress={() => this.props.navigation.navigate(item.link)}
           >
             <MenuItem
               key={index}
@@ -40,42 +40,49 @@ const items = [
   {
     icon: "ios-settings",
     title: "My Account",
-    text: "settings"
+    text: "settings",
+    link: "EmptyScreen"
   },
   {
     icon: "ios-people",
     title: "My Children",
     text: "change or edit children",
-    link: "ChildListScreen"
+    link: "Children"
   },
   {
     icon: "ios-help-buoy",
     title: "Support",
-    text: "get help"
+    text: "get help",
+    link: "EmptyScreen"
   },
   {
     icon: "ios-card",
     title: "Billing",
-    text: "make payments"
+    text: "make payments",
+    link: "EmptyScreen"
   },
   {
     icon: "ios-information-circle",
     title: "School Information",
-    text: "documents and forms"
+    text: "documents and forms",
+    link: "EmptyScreen"
   },
   {
     icon: "ios-quote",
     title: "Provide Feedback",
-    text: "we'd love to hear your thoughts"
+    text: "we'd love to hear your thoughts",
+    link: "EmptyScreen"
   },
   {
     icon: "ios-lock",
     title: "Privacy",
-    text: "how we protect your data"
+    text: "how we protect your data",
+    link: "EmptyScreen"
   },
   {
     icon: "ios-exit",
     title: "Log out",
-    text: "see you soon!"
+    text: "see you soon!",
+    link: "EmptyScreen"
   }
 ];
