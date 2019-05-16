@@ -1,12 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import { Icon } from "expo";
 
 const Child = props => (
   <Container>
-    <Image source={{ uri: props.profile_pic }} />
+    <Image source={{ uri: props.profile_pic, cache: "force-cache" }} />
     <Content>
       <Name>{props.name}</Name>
       <Text>{props.classe}</Text>
+      <RightArrow style={{ position: "absolute", right: 80 }}>
+        <Icon.Ionicons
+          name="ios-arrow-forward"
+          size={20}
+          color="#BDE4F7"
+          style={{ marginTop: -2 }}
+        />
+      </RightArrow>
     </Content>
   </Container>
 );
@@ -23,10 +32,13 @@ const Image = styled.Image`
   height: 68px;
   border-radius: 34px;
   justify-content: center;
+  border-width: 2px;
+  border-color: #bde4f7;
 `;
 
 const Content = styled.View`
   padding-left: 20px;
+  width: 100%;
 `;
 
 const Name = styled.Text`
@@ -40,4 +52,11 @@ const Text = styled.Text`
   font-size: 16px;
   font-weight: 400;
   margin-top: 5px;
+`;
+
+const RightArrow = styled.View`
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
 `;

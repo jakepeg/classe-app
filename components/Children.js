@@ -3,9 +3,27 @@ import { TouchableOpacity, Button } from "react-native";
 import styled from "styled-components";
 import Child from "./Child";
 import { withNavigation } from "react-navigation";
-import { Icon } from "expo";
+import { connect } from "react-redux";
+
+function mapStateToProps(state) {
+  return { action: state.child_name };
+}
+
+const mapDispatchToProps = dispatch => ({
+  selectChild: (name, pic) =>
+    dispatch({
+      type: "SELECT_CHILD",
+      name: name,
+      pic: pic
+    })
+});
 
 class Children extends React.Component {
+  selectedChild(childName, mugShot) {
+    this.props.selectChild(childName, mugShot);
+    this.props.navigation.navigate("Home");
+  }
+
   render() {
     return (
       <Wrapper>
@@ -14,7 +32,7 @@ class Children extends React.Component {
           {children.map((child, index) => (
             <TouchableOpacity
               key={index}
-              onPress={() => this.props.navigation.navigate("Home")}
+              onPress={() => this.selectedChild(child.name, child.profile_pic)}
             >
               <Child
                 key={index}
@@ -34,7 +52,10 @@ class Children extends React.Component {
   }
 }
 
-export default withNavigation(Children);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withNavigation(Children));
 
 const ChildList = styled.View`
   padding-left: 30px;
@@ -82,18 +103,24 @@ const children = [
     name: "Quin Jim",
     profile_pic: "https://cl.ly/9e343dd10c2c/quin.png",
     child_id: "00000001",
-    classe: "1P (Marie-Anne)"
+    classe: "1P (Marie-Anne)",
+    classe_id: "00000001",
+    school_id: "00000001"
   },
   {
     name: "Elodie Laia",
     profile_pic: "https://cl.ly/80131793f4f8/IMG_0216.jpg",
     child_id: "00000002",
-    classe: "8E (Cyril)"
+    classe: "8E (Cyril)",
+    classe_id: "00000002",
+    school_id: "00000002"
   },
   {
     name: "Louis Cyril",
     profile_pic: "https://cl.ly/4667cf183191/lou.jpg",
     child_id: "00000003",
-    classe: "Year 12"
+    classe: "Year 12",
+    classe_id: "00000003",
+    school_id: "00000003"
   }
 ];

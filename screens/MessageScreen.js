@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Menu from "../components/Menu";
+import Header from "../components/Header";
+import Messages from "../components/Messages";
 
-class MoreScreen extends React.Component {
+class MessageScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
@@ -10,16 +11,18 @@ class MoreScreen extends React.Component {
   render() {
     return (
       <Container>
-        <Menu />
+        <Header />
+        <Messages />
       </Container>
     );
   }
 }
 
-export default MoreScreen;
+export default MessageScreen;
 
 const Container = styled.View`
-  flex: 1;
+  /* flex: 1;
   justify-content: center;
   align-items: center;
+  height: 100%; */
 `;

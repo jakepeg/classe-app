@@ -51,11 +51,10 @@ class HomeScreen extends React.Component {
   };
 
   componentDidMount() {
-    StatusBar.setBarStyle("light-content", true);
-
-    if (Platform.OS == "android") {
-      StatusBar.setBarStyle("light-content", true);
-    }
+    // StatusBar.setBarStyle("light-content", true);
+    // if (Platform.OS == "android") {
+    //   StatusBar.setBarStyle("light-content", true);
+    // }
   }
 
   render() {

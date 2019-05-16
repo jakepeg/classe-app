@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Icon } from "expo";
 
-const MenuItem = props => (
+const MessageItem = props => (
   <Container>
     <IconView>
-      <Icon.Ionicons name={props.icon} size={26} color="#BDE4F7" />
+      <Icon.Ionicons name={props.icon} size={26} color="#009ADB" />
     </IconView>
     <Content>
       <Title>{props.title}</Title>
@@ -14,7 +14,7 @@ const MenuItem = props => (
         <Icon.Ionicons
           name="ios-arrow-forward"
           size={20}
-          color="#BDE4F7"
+          color="#009ADB"
           style={{ marginTop: -2 }}
         />
       </RightArrow>
@@ -22,11 +22,11 @@ const MenuItem = props => (
   </Container>
 );
 
-export default MenuItem;
+export default MessageItem;
 
 const Container = styled.View`
   flex-direction: row;
-  margin-top: 36px;
+  margin-top: 45px;
 `;
 
 const IconView = styled.View`
@@ -43,13 +43,13 @@ const Content = styled.View`
 const Title = styled.Text`
   font-size: 16px;
   font-weight: 600;
-  color: #ffffff;
+  color: #4f4f4f;
   text-transform: uppercase;
 `;
 
 const Text = styled.Text`
   font-size: 16px;
-  color: #ffffff;
+  color: #3c4560;
   font-weight: 500;
   margin-top: 5px;
 `;

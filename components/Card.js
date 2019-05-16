@@ -125,7 +125,6 @@ const Title = styled.Text`
 const Subtitle = styled.Text`
   font-size: 14px;
   font-weight: 600;
-  /* color: rgba(255, 255, 255, 0.8); */
   color: #4f4f4f;
   text-transform: uppercase;
   position: absolute;

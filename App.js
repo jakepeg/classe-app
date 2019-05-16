@@ -10,18 +10,25 @@ const client = new ApolloClient({
 });
 
 const initialState = {
-  action: "",
-  name: ""
+  user_id: "0001",
+  child_id: "0001",
+  child_name: "Quin Jim",
+  child_image: "https://cl.ly/9e343dd10c2c/quin.png"
 };
+
+// const reducer = (state = initialState, selectedChild) => {
+//   console.log(selectedChild.name);
+//   console.log(selectedChild.pic);
+//   return state;
+// };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "OPEN_MENU":
-      return { action: "openMenu" };
-    case "CLOSE_MENU":
-      return { action: "closeMenu" };
-    case "UPDATE_NAME":
-      return { name: action.name };
+    case "SELECT_CHILD":
+      return {
+        child_name: action.name,
+        child_image: action.pic
+      };
     default:
       return state;
   }

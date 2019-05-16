@@ -70,7 +70,7 @@ const items = [
   {
     icon: "ios-quote",
     title: "Provide Feedback",
-    text: "we'd love to hear your thoughts",
+    text: "tell us your thoughts",
     link: "EmptyScreen"
   },
   {

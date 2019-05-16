@@ -5,6 +5,7 @@ import Children from "../components/Children";
 class ChildrenScreen extends React.Component {
   static navigationOptions = {
     header: null
+    //var tabBarVisible = false;
   };
 
   render() {

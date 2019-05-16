@@ -160,12 +160,6 @@ const Title = styled.Text`
   font-weight: bold;
 `;
 
-const Caption = styled.Text`
-  color: black;
-  font-size: 17px;
-  width: 300px;
-`;
-
 const CloseView = styled.View`
   width: 32px;
   height: 32px;
@@ -182,19 +176,6 @@ const Wrapper = styled.View`
   top: 40px;
   left: 20px;
   align-items: center;
-`;
-
-const Logo = styled.Image`
-  width: 24px;
-  height: 24px;
-`;
-
-const Subtitle = styled.Text`
-  font-size: 15px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
-  margin-left: 5px;
-  text-transform: uppercase;
 `;
 
 const Author = styled.Text`

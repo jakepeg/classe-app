@@ -2,13 +2,17 @@ import React from "react";
 import {
   createBottomTabNavigator,
   createStackNavigator,
-  createAppContainer
+  createAppContainer,
+  StackActions,
+  NavigationActions
 } from "react-navigation";
+
 import { Icon } from "expo";
 import HomeScreen from "../screens/HomeScreen";
 import SectionScreen from "../screens/SectionScreen";
 import MoreScreen from "../screens/MoreScreen";
 import AgendaScreen from "../screens/AgendaScreen";
+import MessageScreen from "../screens/MessageScreen";
 import MessagesScreen from "../screens/MessagesScreen";
 import ChildrenScreen from "../screens/ChildrenScreen";
 import EmptyScreen from "../screens/EmptyScreen";
@@ -23,6 +27,9 @@ const HomeStack = createStackNavigator(
     },
     Section: {
       screen: SectionScreen
+    },
+    Children: {
+      screen: ChildrenScreen
     }
   },
   {
@@ -34,7 +41,7 @@ HomeStack.navigationOptions = ({ navigation }) => {
   var tabBarVisible = true;
   const routeName = navigation.state.routes[navigation.state.index].routeName;
 
-  if (routeName == "Section") {
+  if (routeName == "Children") {
     tabBarVisible = false;
   }
 
@@ -50,6 +57,7 @@ HomeStack.navigationOptions = ({ navigation }) => {
       style: {
         backgroundColor: "#009ADB"
       }
+      // initialRouteName: "Children"
     },
     tabBarIcon: ({ focused }) => (
       <Icon.Ionicons
@@ -88,9 +96,19 @@ AgendaStack.navigationOptions = {
   )
 };
 
-const MessagesStack = createStackNavigator({
-  Messages: MessagesScreen
-});
+const MessagesStack = createStackNavigator(
+  {
+    Message: {
+      screen: MessageScreen
+    },
+    Messages: {
+      screen: MessagesScreen
+    }
+  },
+  {
+    mode: "modal"
+  }
+);
 
 MessagesStack.navigationOptions = {
   tabBarLabel: "Messages",
@@ -118,34 +136,49 @@ const MoreStack = createStackNavigator({
   More: {
     screen: MoreScreen
   },
-  Children: {
-    screen: ChildrenScreen
-  },
   EmptyScreen: {
     screen: EmptyScreen
   }
 });
 
-MoreStack.navigationOptions = {
-  tabBarLabel: "Plus",
-  tabBarOptions: {
-    activeTintColor: activeColor,
-    inactiveTintColor: inactiveColor,
-    labelStyle: {
-      fontSize: 12
+MoreStack.navigationOptions = ({ navigation }) => {
+  // const resetAction = StackActions.reset({
+  //   index: 0,
+  //   actions: [NavigationActions.navigate({ routeName: "Home" })]
+  // });
+  // navigation.dispatch(resetAction);
+
+  //navigation.reset([NavigationActions.navigate({ routeName: "More" })], 0);
+
+  var tabBarVisible = true;
+  const routeName = navigation.state.routes[navigation.state.index].routeName;
+
+  if (routeName == "Children") {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+    tabBarLabel: "Plus",
+    tabBarOptions: {
+      activeTintColor: activeColor,
+      inactiveTintColor: inactiveColor,
+      labelStyle: {
+        fontSize: 12
+      },
+      style: {
+        backgroundColor: "#009ADB"
+      }
     },
-    style: {
-      backgroundColor: "#009ADB"
-    }
-  },
-  tabBarIcon: ({ focused }) => (
-    <Icon.Ionicons
-      name="ios-more"
-      size={26}
-      color={focused ? activeColor : inactiveColor}
-      style={{ marginBottom: -10 }}
-    />
-  )
+    tabBarIcon: ({ focused }) => (
+      <Icon.Ionicons
+        name="ios-more"
+        size={26}
+        color={focused ? activeColor : inactiveColor}
+        style={{ marginBottom: -10 }}
+      />
+    )
+  };
 };
 
 const TabNavigator = createBottomTabNavigator({

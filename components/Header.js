@@ -2,6 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { withNavigation } from "react-navigation";
 import { TouchableOpacity } from "react-native";
+import { connect } from "react-redux";
+
+function mapStateToProps(state) {
+  console.log(state.child_name);
+  return { childName: state.child_name, childImage: state.child_image };
+}
 
 class Header extends React.Component {
   render() {
@@ -9,19 +15,21 @@ class Header extends React.Component {
       <Wrapper>
         <HeaderImage source={require("../assets/headerbluesolid.png")} />
 
-        <Name>Quin Jim</Name>
+        <Name>{this.props.childName}</Name>
 
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate("Children")}
         >
-          <ProfileImage source={require("../assets/quin.png")} />
+          <ProfileImage
+            source={{ uri: this.props.childImage, cache: "force-cache" }}
+          />
         </TouchableOpacity>
       </Wrapper>
     );
   }
 }
 
-export default withNavigation(Header);
+export default connect(mapStateToProps)(withNavigation(Header));
 
 const ProfileImage = styled.Image`
   width: 68px;
