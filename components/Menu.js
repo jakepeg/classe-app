@@ -3,15 +3,46 @@ import { TouchableOpacity } from "react-native";
 import styled from "styled-components";
 import MenuItem from "./MenuItem";
 import { withNavigation } from "react-navigation";
+import { connect } from "react-redux";
+import { AsyncStorage } from "react-native";
+
+function mapStateToProps(state) {
+  return { action: state.action };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    closeMenu: () =>
+      dispatch({
+        type: "CLOSE_MENU"
+      }),
+    updateName: name =>
+      dispatch({
+        type: "UPDATE_NAME",
+        name
+      }),
+    openLogin: () =>
+      dispatch({
+        type: "OPEN_LOGIN"
+      })
+  };
+}
 
 class Menu extends React.Component {
+  handleMenu = (index, link) => {
+    if (index === 7) {
+      this.props.openLogin();
+    }
+    this.props.navigation.navigate(link);
+  };
+
   render() {
     return (
       <Content>
         {items.map((item, index) => (
           <TouchableOpacity
             key={index}
-            onPress={() => this.props.navigation.navigate(item.link)}
+            onPress={() => this.handleMenu(index, item.link)}
           >
             <MenuItem
               key={index}
@@ -26,7 +57,10 @@ class Menu extends React.Component {
   }
 }
 
-export default withNavigation(Menu);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withNavigation(Menu));
 
 const Content = styled.View`
   height: 100%;
@@ -83,6 +117,6 @@ const items = [
     icon: "ios-exit",
     title: "Log out",
     text: "see you soon!",
-    link: "EmptyScreen"
+    link: "Children"
   }
 ];

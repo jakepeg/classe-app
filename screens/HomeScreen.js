@@ -10,6 +10,7 @@ import styled from "styled-components";
 import Card from "../components/Card";
 import { connect } from "react-redux";
 import Header from "../components/Header";
+import ModalLogin from "../components/ModalLogin";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 
@@ -45,17 +46,24 @@ function mapStateToProps(state) {
   return { action: state.action, name: state.name };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    openLogin: () =>
+      dispatch({
+        type: "OPEN_LOGIN"
+      })
+  };
+}
+
 class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
 
-  componentDidMount() {
-    // StatusBar.setBarStyle("light-content", true);
-    // if (Platform.OS == "android") {
-    //   StatusBar.setBarStyle("light-content", true);
-    // }
-  }
+  // componentDidMount() {
+  //   // if not loggedd in...
+  //   this.props.openLogin();
+  // }
 
   render() {
     return (
@@ -103,12 +111,16 @@ class HomeScreen extends React.Component {
             </ScrollView>
           </ScrollView>
         </SafeAreaView>
+        {/* <ModalLogin /> */}
       </RootView>
     );
   }
 }
 
-export default connect(mapStateToProps)(HomeScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomeScreen);
 
 const Message = styled.Text`
   margin: 20px;

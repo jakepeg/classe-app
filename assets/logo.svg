@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(25.000000, 25.000000)">
+            <circle id="Oval" fill="#4F4F4F" cx="75" cy="75" r="75"></circle>
+            <g id="Group" transform="translate(77.073095, 71.980848) rotate(-4.000000) translate(-77.073095, -71.980848) translate(26.073095, 40.480848)">
+                <polygon id="Triangle" fill="#44C826" transform="translate(63.445929, 31.021392) rotate(55.000000) translate(-63.445929, -31.021392) " points="63.6030698 -8.5808489 73.5399751 70.5835115 53.351882 70.6236326"></polygon>
+                <polygon id="Triangle" fill="#009ADB" transform="translate(26.543560, 37.707286) rotate(-49.000000) translate(-26.543560, -37.707286) " points="26.444905 14.1177689 38.7457651 61.2968026 14.3413541 61.2457136"></polygon>
+                <polygon id="Rectangle" fill="#24B4B1" points="40.2015478 36.9426229 55.2015478 45.0927763 36.6299077 61.9426229 25.2015478 45.0927763"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

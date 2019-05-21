@@ -16,20 +16,27 @@ import MessageScreen from "../screens/MessageScreen";
 import MessagesScreen from "../screens/MessagesScreen";
 import ChildrenScreen from "../screens/ChildrenScreen";
 import EmptyScreen from "../screens/EmptyScreen";
+import SignupScreen from "../screens/SignupScreen";
 
 const activeColor = "#ffffff";
 const inactiveColor = "#BDE4F7";
 
 const HomeStack = createStackNavigator(
   {
+    // Empty: {
+    //   screen: EmptyScreen
+    // },
+    Children: {
+      screen: ChildrenScreen
+    },
     Home: {
       screen: HomeScreen
     },
     Section: {
       screen: SectionScreen
     },
-    Children: {
-      screen: ChildrenScreen
+    SignUp: {
+      screen: SignupScreen
     }
   },
   {
@@ -41,6 +48,7 @@ HomeStack.navigationOptions = ({ navigation }) => {
   var tabBarVisible = true;
   const routeName = navigation.state.routes[navigation.state.index].routeName;
 
+  // if not logged in tabBarVisible = false as well, then update when logged in, so will this need to be in component did update?
   if (routeName == "Children") {
     tabBarVisible = false;
   }
@@ -153,7 +161,7 @@ MoreStack.navigationOptions = ({ navigation }) => {
   var tabBarVisible = true;
   const routeName = navigation.state.routes[navigation.state.index].routeName;
 
-  if (routeName == "Children") {
+  if (routeName == "Children" || "SignUp") {
     tabBarVisible = false;
   }
 

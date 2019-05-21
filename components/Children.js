@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Child from "./Child";
 import { withNavigation } from "react-navigation";
 import { connect } from "react-redux";
+import ModalLogin from "../components/ModalLogin";
 
 function mapStateToProps(state) {
   return { action: state.child_name };
@@ -15,6 +16,10 @@ const mapDispatchToProps = dispatch => ({
       type: "SELECT_CHILD",
       name: name,
       pic: pic
+    }),
+  openLogin: () =>
+    dispatch({
+      type: "OPEN_LOGIN"
     })
 });
 
@@ -22,6 +27,16 @@ class Children extends React.Component {
   selectedChild(childName, mugShot) {
     this.props.selectChild(childName, mugShot);
     this.props.navigation.navigate("Home");
+  }
+
+  componentDidMount() {
+    this.props.openLogin();
+    console.log("children component mounted");
+  }
+
+  // component did update - if loggedin false: openlogin, if true: don't open login. Logout needs to update loggedin to false, then load childrescreen
+  componentDidUpdate() {
+    console.log("children component updated");
   }
 
   render() {
@@ -47,6 +62,7 @@ class Children extends React.Component {
         <Container>
           <ActionButton>+</ActionButton>
         </Container>
+        <ModalLogin />
       </Wrapper>
     );
   }

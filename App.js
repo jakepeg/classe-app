@@ -13,7 +13,10 @@ const initialState = {
   user_id: "0001",
   child_id: "0001",
   child_name: "Quin Jim",
-  child_image: "https://cl.ly/9e343dd10c2c/quin.png"
+  child_image: "https://cl.ly/9e343dd10c2c/quin.png",
+  action: "",
+  name: "Stranger",
+  loggedIn: false
 };
 
 // const reducer = (state = initialState, selectedChild) => {
@@ -26,10 +29,32 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "SELECT_CHILD":
       return {
+        ...state,
         child_name: action.name,
         child_image: action.pic
       };
+    case "OPEN_LOGIN":
+      return {
+        ...state,
+        action: "openLogin"
+      };
+    case "CLOSE_LOGIN":
+      return {
+        ...state,
+        action: "closeLogin"
+      };
+    case "UPDATE_NAME":
+      return {
+        ...state,
+        name: action.name
+      };
+    case "UPDATE_LOGIN":
+      return {
+        ...state,
+        loggedIn: action.status
+      };
     default:
+      console.log(state.loggedIn);
       return state;
   }
 };
