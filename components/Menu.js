@@ -117,6 +117,6 @@ const items = [
     icon: "ios-exit",
     title: "Log out",
     text: "see you soon!",
-    link: "Children"
+    link: "SignIn"
   }
 ];

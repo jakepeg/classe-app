@@ -5,7 +5,7 @@ import { TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
-  console.log(state.child_name);
+  //  console.log(state.child_name);
   return { childName: state.child_name, childImage: state.child_image };
 }
 

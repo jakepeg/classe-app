@@ -20,10 +20,6 @@ class SignupScreen extends React.Component {
     isLoading: false
   };
 
-  // updateLanguage = language => {
-  //   this.setState({ language: language });
-  // };
-
   static navigationOptions = {
     header: null
   };
@@ -37,7 +33,7 @@ class SignupScreen extends React.Component {
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => this.props.navigation.navigate("Children"))
+      .then(() => this.props.navigation.navigate("SignIn"))
       .catch(error => this.setState({ errorMessage: error.message }));
   };
 
@@ -47,46 +43,17 @@ class SignupScreen extends React.Component {
         <Modal>
           <Logo source={require("../assets/logo.png")} />
           <Text>Get Started with ClasseApp</Text>
-          {/* <TextInput
-            onChangeText={name => this.setState({ name })}
-            placeholder="Name"
-          /> */}
           <TextInput
             onChangeText={email => this.setState({ email })}
             placeholder="Email"
             keyboardType="email-address"
             autoCapitalize="none"
           />
-          {/* <TextInput
-            onChangeText={phone => this.setState({ phone })}
-            placeholder="Phone"
-          /> */}
           <TextInput
             onChangeText={password => this.setState({ password })}
             placeholder="Password"
             secureTextEntry={true}
           />
-
-          {/* <Picker
-          selectedValue={this.state.language}
-          onValueChange={this.updateLanguage}
-        >
-          <Picker.Item label="English" value="en" />
-          <Picker.Item label="Francais" value="fr" />
-          <Picker.Item label="Italiano" value="it" />
-          <Picker.Item label="Deutsch" value="de" />
-        </Picker>
-        <Text>{this.state.language}</Text>
-        <CheckBox title="Accept Terms" checked={this.state.checked} /> */}
-
-          {/* <IconName>
-            <Icon.Ionicons name="ios-person" size={26} color="#009adb" />
-          </IconName>
-
-          <IconPhone>
-            <Icon.Ionicons name="ios-call" size={26} color="#009adb" />
-          </IconPhone> */}
-
           <IconEmail>
             <Icon.Ionicons name="ios-mail" size={26} color="#009adb" />
           </IconEmail>
@@ -102,7 +69,7 @@ class SignupScreen extends React.Component {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Children")}
+            onPress={() => this.props.navigation.navigate("SignIn")}
           >
             <LinkText>Login</LinkText>
           </TouchableOpacity>

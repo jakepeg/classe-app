@@ -16,7 +16,8 @@ const initialState = {
   child_image: "https://cl.ly/9e343dd10c2c/quin.png",
   action: "",
   name: "Stranger",
-  loggedIn: false
+  loggedIn: false,
+  child_list: "test"
 };
 
 // const reducer = (state = initialState, selectedChild) => {
@@ -32,6 +33,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         child_name: action.name,
         child_image: action.pic
+      };
+    case "UPDATE_CHILD_LIST":
+      return {
+        ...state,
+        child_list: action.kids
       };
     case "OPEN_LOGIN":
       return {
@@ -52,6 +58,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loggedIn: action.status
+      };
+    case "OPEN_ADD_CHILD":
+      return {
+        ...state,
+        action: "openAddChild"
+      };
+    case "CLOSE_ADD_CHILD":
+      return {
+        ...state,
+        action: "closeAddChild"
       };
     default:
       console.log(state.loggedIn);

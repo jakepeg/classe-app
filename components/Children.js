@@ -4,11 +4,18 @@ import styled from "styled-components";
 import Child from "./Child";
 import { withNavigation } from "react-navigation";
 import { connect } from "react-redux";
-import ModalLogin from "../components/ModalLogin";
+import ModalLogin from "./ModalLogin";
+import AddChild from "./AddChild";
+import firebase from "./Firebase";
 
 function mapStateToProps(state) {
-  return { action: state.child_name };
+  return {
+    //action: state.child_name,
+    kids: state.child_list
+  };
 }
+
+//const children = children;
 
 const mapDispatchToProps = dispatch => ({
   selectChild: (name, pic) =>
@@ -20,6 +27,10 @@ const mapDispatchToProps = dispatch => ({
   openLogin: () =>
     dispatch({
       type: "OPEN_LOGIN"
+    }),
+  openAddChild: () =>
+    dispatch({
+      type: "OPEN_ADD_CHILD"
     })
 });
 
@@ -32,9 +43,9 @@ class Children extends React.Component {
   componentDidMount() {
     this.props.openLogin();
     console.log("children component mounted");
+    //console.log(this.props.kids);
   }
 
-  // component did update - if loggedin false: openlogin, if true: don't open login. Logout needs to update loggedin to false, then load childrescreen
   componentDidUpdate() {
     console.log("children component updated");
   }
@@ -44,25 +55,33 @@ class Children extends React.Component {
       <Wrapper>
         <ChildList>
           <Title>Mes Enfants</Title>
-          {children.map((child, index) => (
+          {this.props.kids.map((child, index) => (
             <TouchableOpacity
               key={index}
-              onPress={() => this.selectedChild(child.name, child.profile_pic)}
+              onPress={() =>
+                this.selectedChild(child.child_name, child.child_photo)
+              }
             >
               <Child
                 key={index}
-                profile_pic={child.profile_pic}
-                name={child.name}
-                classe={child.classe}
+                indexkey={index}
+                // profile_pic={child.profile_pic}
+                profile_pic={child.child_photo}
+                name={child.child_name}
+                //classe={child.classes}
+                classe="Class xx"
               />
             </TouchableOpacity>
           ))}
         </ChildList>
 
         <Container>
-          <ActionButton>+</ActionButton>
+          <TouchableOpacity onPress={() => this.props.openAddChild()}>
+            <ActionButton>+</ActionButton>
+          </TouchableOpacity>
         </Container>
         <ModalLogin />
+        <AddChild />
       </Wrapper>
     );
   }
